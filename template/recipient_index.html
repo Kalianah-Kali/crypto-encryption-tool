@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale = 1">
+	<link rel="stylesheet" href="../static/css/recipient_index.css">
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+	<title>recipient</title>
+</head>
+<body>
+	<h1>TpyrKc4h</h1>
+	<p>Encrypt / Decrypt — secure RSA tool ||| vesset interface</p>
+	<div class="general_div">
+		<form method="POST" action="/recipient_result">
+			<textarea name="text_string" id="input_textArea" placeholder="Paste your text here strings, numeric, alphanumeric">{{result}}</textarea>
+			<button class="copybtn" name="specific_button" type="button" id="copyText">Copy</button>
+			<p>Keys below ↓</p>
+			<input type="text" name="public_key" id="input_public" placeholder="public key" autocomplete="off"/>
+			<button class="copybtn" type="button" id="copyPublic">Copy</button>
+			<input type="text" name="partial_key" id="input_partial" placeholder="partial key" autocomplete="off">
+			<button class="copybtn" type="button" id="copyPartial">Copy</button>
+			<input type="submit" name="apply-converssion" value="E/D Crypt">
+		</form>
+	</div>
+
+	<form method="POST" action="/home">
+		<input type="submit" name="Back" value="Back">
+	</form>
+
+	<script>
+		// Fonction générique pour copier le contenu d'un input
+		function copyToClipboard(inputId, buttonElement) {
+			const input = document.getElementById(inputId);
+			if (input) {
+				navigator.clipboard.writeText(input.value).then(() => {
+					buttonElement.textContent = "Copied ✓";
+					setTimeout(() => buttonElement.textContent = "Copy", 389);
+				}).catch(err => {
+					alert("Copy failed: " + err);
+				});
+			}
+		}
+
+		// Bouton pour la zone de texte
+		document.getElementById("copyText").addEventListener("click", function() {
+			copyToClipboard("input_textArea", this);
+		});
+
+		// Bouton pour la clé publique
+		document.getElementById("copyPublic").addEventListener("click", function() {
+			copyToClipboard("input_public", this);
+		}); // Parenthèse ajoutée ici
+
+		// Bouton pour la clé partielle
+		document.getElementById("copyPartial").addEventListener("click", function() {
+			copyToClipboard("input_partial", this);
+		});
+	</script>
+
+</body>
+</html>

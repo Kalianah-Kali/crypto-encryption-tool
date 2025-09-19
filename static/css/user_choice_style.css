@@ -1,0 +1,70 @@
+body{
+	background-color: #0f1624;
+	font-family: "JetBrains Mono", monospace;
+	color: #9aa7b2;
+}
+
+h1	{
+	color:#399ffe;
+	margin-left: 376px;
+}
+
+a{
+	color: #9aa7b2;
+	margin-left: 86%
+}
+
+p.advice{
+	margin-top:1%;
+	margin-left: 376px;
+}
+
+div.general_div	{
+	display: flex;
+	justify-content: center;
+	gap:30px;
+	border-style: solid;
+	border-width: 0.5px;
+	border-radius: 5px;
+	height: 350px;
+	width: 370px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+input[name="shipper_mode"], input[name="recipient_mode"], input[name='key_generator']	{
+	color: #399ffe;
+	margin-top: 150px;
+	border-radius: 5px;
+	border-width: 0.5px
+	font-family: "JetBrains Mono";
+	border-top: 5px double #e82680;
+	border-left: 5px double #6338e7;
+	border-right: 4px double #00b2c1;
+	border-bottom: 4px double #fff900;
+	background-color: transparent;
+	box-shadow: -5px 5px 15px 1px #6338e7;
+}
+
+/* 📱 Responsive mobile */
+@media (max-width: 1024px) {
+	h1, p.advice {
+		margin-left: 0;
+		text-align: center;
+	}
+
+	div.general_div {
+		width: 95%;
+		height: auto;
+		padding: 10px 0;
+	}
+
+	input[name="shipper_mode"], input[name="recipient_mode"]	{
+		margin-top: 50px;
+	}
+
+	input[name="key_generator"]	{
+		display: flex;
+		margin-left: -159px;
+	}
+}

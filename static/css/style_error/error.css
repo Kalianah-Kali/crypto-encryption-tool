@@ -1,0 +1,56 @@
+body{
+	background-color: #0f1624;
+	font-family: "JetBrains Mono", monospace;
+	color: #9aa7b2;
+}
+
+h1	{
+	color:#399ffe;
+	margin-left: 376px;
+}
+
+p{
+	margin-left: 90px;
+}
+
+div.general_div	{
+	display: flex;
+	gap: 77px;
+	justify-content: center;
+}
+
+input{
+	color: #399ffe;
+	border-radius: 5px;
+	border-width: 0.5px
+	font-family: "JetBrains Mono";
+	border-top: 5px double #e82680;
+	border-left: 5px double #6338e7;
+	border-right: 4px double #00b2c1;
+	border-bottom: 4px double #fff900;
+	background-color: transparent;
+	box-shadow: -5px 5px 15px 1px #6338e7;
+}
+
+/* 📱 Responsive mobile */
+@media (max-width: 1024px) {
+	h1 {
+		margin-left: 0;
+		text-align: center;
+	}
+
+	p{
+		margin-left: 20px;
+		text-align: center;
+	}
+
+	div.general_div {
+		width: 95%;
+		height: auto;
+	}
+
+	input{
+		margin-top: 50px;
+		margin-left: 50px;
+	}
+}
