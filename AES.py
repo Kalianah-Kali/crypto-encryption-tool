@@ -17,4 +17,4 @@ def matrix_message(message) :
 	if len(matrix[len(matrix) - 1]) < 4:
 		matrix[len(matrix) - 1] += ['' for x in range(4 - len(matrix[len(matrix) - 1]))]
 	return matrix
-print(matrix_message("hello world!!I'll be alive for ever"))
+print(matrix_message("hello world!!I'll be alive forever"))
