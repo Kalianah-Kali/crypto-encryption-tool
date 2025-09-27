@@ -6,11 +6,11 @@ def divisible_by_4(variable):
 def matrix_number(len_matrix):
 
 	if divisible_by_4(len_matrix):
-		return (len_matrix // 4)
+		return len_matrix // 4
 	else:
-		return (len_matrix // 4) + 1
+		return len_matrix // 4 + 1
 	
-def AddRoundKey(message) :
+def put_into_a_matrix(message) :
 
 	line_nbr = 0
 	for x in range(0, len(message), 4):
@@ -19,12 +19,14 @@ def AddRoundKey(message) :
 	counter = 0
 	matrix_counter = 0
 	while counter < len(message):
-		matrix[matrix_counter] += [message[counter]]
+		matrix[matrix_counter] += [bin(ord(message[counter]))] #binary or decimal
 		counter += 1
 		if (divisible_by_4(counter)):
 			matrix_counter += 1
 	if len(matrix[len(matrix) - 1]) < 4:
 		matrix[len(matrix) - 1] += ['' for x in range(4 - len(matrix[len(matrix) - 1]))]
+	if len(matrix) < 4:
+		matrix += [['' for x in range(4)] for x in range(4 - len(matrix))]
 	if len(matrix) > 4:
 		updated_matrix = [[] for x in range(matrix_number(len(matrix)))]
 		counter = 0
@@ -34,18 +36,14 @@ def AddRoundKey(message) :
 			counter += 1
 			if (divisible_by_4(counter)):
 				c += 1
-				print(c)
+		if len(updated_matrix[len(updated_matrix) - 1]) < 4:
+			updated_matrix[len(updated_matrix) - 1] += [['' for x in range(4)] for x in range(4 - len(updated_matrix[len(updated_matrix) - 1]))]
 		return updated_matrix
-		
-print(AddRoundKey("Hello World I'm still loving you!!!"))
+			
+	return matrix
 
 
 
 
-
-
-#print(AddRoundKey("hello world I'm still alive!! a")) #len_matrix = 8
-#print(AddRoundKey("hello world I'm still alive!! and I'm still al")) #len_matrix = 12
-#print(AddRoundKey("hello world I'm still alive!! and I'")) #len_matrix = 9
-#print(AddRoundKey("hello world I'm still alive!")) #len_matrix = 7 **pile
-#print(AddRoundKey("hello world I'm still alive!! and I'm still alioo"))
+print(put_into_a_matrix("hello world!! how"))
+print(put_into_a_matrix("tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt"))
