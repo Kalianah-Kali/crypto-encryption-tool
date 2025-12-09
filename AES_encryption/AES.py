@@ -27,6 +27,14 @@ def dectobin(integer):
 		string += "0" * (8 - len(string))
 	return string[::-1]
 	
+def bintodec(string):
+	if string == '':
+		raise ValueError ("value error")
+	res, cpt = 0, len(string) - 1
+	for x in string:
+		res += int(x) * 2**cpt; cpt -=1
+	return res
+	
 def XOR(octet_a, octet_b):
 	string = ""
 	for x in range(8):
@@ -45,7 +53,7 @@ def put_into_a_matrix(message) :
 	counter = 0
 	matrix_counter = 0
 	while counter < len(message):
-		matrix[matrix_counter] += [dectobin(ord(message[counter]))]
+		matrix[matrix_counter] += [((message[counter]))] #[dectobin(ord(message[counter]))]
 		counter += 1
 		if (divisible_by_4(counter)):
 			matrix_counter += 1
@@ -69,20 +77,18 @@ def put_into_a_matrix(message) :
 	
 def AddRoundKey(message, key):
 	
-	matrix_mess, matrix_key = put_into_a_matrix(message), put_into_a_matrix(key)
-	counter = len(matrix_key)
-	new_matrix_key = []
-	if counter < len(matrix_mess):
-		while counter < len(matrix_mess):
-			for x in range(len(matrix_key)):
-				new_matrix_key += [matrix_key[x]]
-			counter += 1
-		new_matrix_key += [matrix_key[0]]
-	xor_result = []
+	matrix_mess = put_into_a_matrix(message)
+	while len(key) < len(message):
+		key += key
+	key = key[0:len(message)]; matrix_key = put_into_a_matrix(key); temp_xor_res = []; xor_res = ''
 	for x in range(len(matrix_mess)):
 		for y in range(4):
-			for z in range(len(matrix_mess[x][y])):
-				print(matrix_mess[x][y][z])
-
-
-#print(AddRoundKey("hello guys, welcome to my github page", "Jesus is my life!"))
+			for z in range(4):
+				try:
+					temp_xor_res += [[ord(matrix_mess[x][y][z][0]), int(matrix_key[x][y][z])]]
+				except IndexError:
+					continue
+	for x in temp_xor_res:
+		print(chr(bintodec(XOR(dectobin(x[0]), dectobin(x[1])))))
+print(AddRoundKey("Ka", "7"));
+#raise ValueError "synchronization failled"
