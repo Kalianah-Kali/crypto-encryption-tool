@@ -85,10 +85,21 @@ def AddRoundKey(message, key):
 		for y in range(4):
 			for z in range(4):
 				try:
-					temp_xor_res += [[ord(matrix_mess[x][y][z][0]), int(matrix_key[x][y][z])]]
+					temp_xor_res += [[ord(matrix_mess[x][y][z][0]), int(ord(matrix_key[x][y][z]))]]
 				except IndexError:
 					continue
 	for x in temp_xor_res:
-		print(chr(bintodec(XOR(dectobin(x[0]), dectobin(x[1])))))
-print(AddRoundKey("Ka", "7"));
-#raise ValueError "synchronization failled"
+		xor_res += chr(bintodec(XOR(dectobin(x[0]), dectobin(x[1]))))
+	return xor_res
+	
+def SubBytes(AddRoundedKey):
+	matrixed = put_into_a_matrix(AddRoundedKey)
+	for x in matrixed:
+		for y in x:
+			for z in range(4):
+				try:
+					print(dectobin(ord(y[z][0])))
+				except:
+					continue
+
+print(SubBytes(AddRoundKey("KKKKKKK", "hello")))
