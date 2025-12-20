@@ -94,12 +94,26 @@ def AddRoundKey(message, key):
 	
 def SubBytes(AddRoundedKey):
 	matrixed = put_into_a_matrix(AddRoundedKey)
+	string, array = '', []
 	for x in matrixed:
 		for y in x:
 			for z in range(4):
 				try:
-					print(dectobin(ord(y[z][0])))
+					for x in (dectobin(ord(y[z][0]))):
+						if x == '1':
+							string += '0'
+						else:
+							string += '1'
 				except:
 					continue
+	for x in range(0, len(string), 8):
+		array += [(string[x:x+8])]
+	for x in range(len(array)):
+		array[x] = chr(bintodec(array[x]))
+	return array
+	
+def ShiftRows(SBvalue):
+	pass
 
-print(SubBytes(AddRoundKey("KKKKKKK", "hello")))
+#print(len(AddRoundKey("Kalianah", "hello")))
+print(SubBytes(AddRoundKey("kalianah", "hello")))
