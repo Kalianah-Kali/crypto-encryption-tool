@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="../static/img/lettre-k.ico">
+  <title>Kalianah — XOR</title>
+
+  <!-- Polices "hacker" : Orbitron pour titres, JetBrains Mono pour le reste -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../static/img/flower-icon-flower-rose-design-illustration-flower-icon-simple-sign-rose-beauty-design-free-vector.jpg">
+</head>
+<body>
+  <main class="wrap">
+    <header class="brand">
+      <h1>Kalianah-K</h1>
+      <p class="tag">Encrypt / Decrypt — secure XOR tool</p>
+    </header>
+    <form class="card" method="POST" action="/TpyrKc4h" autocomplete="off">
+      <label for="TEXTE" class="label">Texte à chiffrer/déchiffrer</label>
+      <textarea id="TEXTE" name="TEXTE" rows="8" placeholder="Colle ton texte ici — chaînes, numériques, alphanumériques..." required></textarea>
+
+      <label for="cle" class="label">Clé (key)</label>
+      <input id="cle" name="cle" type="text" placeholder="Entrez votre clé (ex: mySecretKey123)" maxlength="128" required>
+
+      <div class="row">
+        <button type="submit" class="btn btn-primary">E / D Crypt</button>
+        <button type="reset" class="btn btn-ghost">Réinitialiser</button>
+      </div>
+
+      <p class="hint">La clé sera répétée pour la longueur du message — garde ta clé secrète.</p>
+    </form>
+    <footer class="foot">
+      <small>Made with ☕ — Keep keys secret. Not for high-value cryptography.</small>
+    </footer>
+  </main>
+</body>
+</html>

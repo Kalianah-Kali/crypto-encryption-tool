@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="../static/img/lettre-k.ico">
+  <title>Résultat — Kalianah</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../static/img/flower-icon-flower-rose-design-illustration-flower-icon-simple-sign-rose-beauty-design-free-vector.jpg">
+</head>
+<body>
+  <main class="wrap">
+    <header class="brand">
+      <h1>Kalianah-K</h1>
+      <p class="tag">Résultat de l'opération</p>
+    </header>
+
+    <section class="card">
+      <label for="resultArea" class="label">Résultat</label>
+      <textarea id="resultArea" readonly rows="8">{{ message }}</textarea>
+
+      <div class="row">
+        <button class="btn btn-primary" id="copyBtn">Copier</button>
+        <form method="POST" action="/en_d_crypt" style="display:inline;">
+          <button class="btn btn-ghost">Retour</button>
+        </form>
+      </div>
+
+      <p class="hint">Le texte ci-dessus est la sortie XOR. Colle-le pour décrypter en utilisant la même clé.</p>
+    </section>
+
+    <footer class="foot">
+      <small>Si le résultat contient des caractères bizarres, la clé ou l'encodage peuvent différer.</small>
+    </footer>
+  </main>
+
+  <script>
+    // Copie moderne + feedback visuel
+    document.getElementById('copyBtn').addEventListener('click', async function () {
+      const txt = document.getElementById('resultArea').value || '';
+      try {
+        await navigator.clipboard.writeText(txt);                
+        this.textContent = 'Copié ✓';
+        setTimeout(() => this.textContent = 'Copier', 1400);
+      } catch (e) {
+        // fallback
+        document.getElementById('resultArea').select();
+        document.execCommand('copy');
+        alert('Texte copié (fallback) !');
+      }
+    });
+  </script>
+</body>
+</html>
